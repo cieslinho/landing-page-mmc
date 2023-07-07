@@ -1,0 +1,343 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* a {
+  text-decoration: none;
+}
+
+* button {
+  cursor: pointer;
+}
+
+* ul {
+  list-style-type: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  padding: 1em;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 768px) {
+  .container {
+    padding: 1em 2em;
+  }
+}
+
+body {
+  background-color: #fff;
+}
+
+.nav {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  position: fixed;
+}
+.nav__overlay {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+@media only screen and (min-width: 768px) {
+  .nav__overlay {
+    display: none;
+  }
+}
+.nav__overlay.active {
+  opacity: 1;
+}
+.nav__navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+}
+.nav__logo img {
+  width: 120px;
+  object-fit: cover;
+}
+@media only screen and (min-width: 768px) {
+  .nav__logo img {
+    width: 150px;
+  }
+}
+.nav__links {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 70vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  gap: 0.5em;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 10000;
+  box-shadow: 0 0 10px #000;
+}
+@media only screen and (min-width: 768px) {
+  .nav__links {
+    flex-direction: row;
+    transform: translate(0);
+    position: inherit;
+    width: inherit;
+    height: inherit;
+    box-shadow: inherit;
+  }
+}
+.nav__links.active {
+  transform: translateX(0);
+}
+.nav__link {
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #fff;
+  position: relative;
+  text-align: center;
+  transition: color 0.2s, background-color 0.2s;
+}
+@media only screen and (min-width: 1024px) {
+  .nav__link {
+    font-size: 1.5rem;
+  }
+}
+.nav__link:nth-child(2) {
+  color: #93f600;
+}
+.nav__link::after {
+  position: absolute;
+  content: "";
+  background-color: #93f600;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s;
+}
+.nav__link:hover {
+  color: #93f600;
+}
+@media only screen and (min-width: 768px) {
+  .nav__link:hover {
+    transition: width 0.5;
+  }
+}
+.nav__link:hover::after {
+  width: 100%;
+}
+.nav__btn {
+  padding: 0.5em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 99999;
+  transition: 0.2s background-color;
+}
+@media only screen and (min-width: 768px) {
+  .nav__btn {
+    display: none;
+  }
+}
+.nav__btn:hover {
+  background-color: #93f600;
+}
+.nav__btn-box {
+  width: 30px;
+  height: 15px;
+  position: relative;
+}
+.nav__btn-bars {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #000;
+  width: 100%;
+  height: 2px;
+  transition: width 0.2s, background-color 0.2s;
+}
+.nav__btn-bars::after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 12px;
+  height: 2px;
+  width: 75%;
+  background-color: #000;
+  transition: width 0.2s, background-color 0.2s;
+}
+.nav__btn-bars::before {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 6px;
+  height: 2px;
+  width: 50%;
+  background-color: #000;
+  transition: width 0.2s, background-color 0.2s;
+}
+.nav__btn:hover .nav__btn-bars {
+  background-color: #fff;
+}
+.nav__btn:hover .nav__btn-bars::after, .nav__btn:hover .nav__btn-bars::before {
+  width: 100%;
+  background-color: #fff;
+}
+.nav__btn.active {
+  background-color: #93f600;
+}
+.nav__btn.active .nav__btn-bars {
+  background-color: #fff;
+}
+.nav__btn.active .nav__btn-bars::after, .nav__btn.active .nav__btn-bars::before {
+  width: 100%;
+  background-color: #fff;
+}
+
+.header {
+  margin-top: 70px;
+  height: 70vh;
+  width: 100vw;
+  position: relative;
+}
+.header::after {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  content: "";
+}
+.header__hero {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.header__boxes {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.header__info {
+  margin-top: 2em;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.header__info img {
+  width: 30px;
+  height: 30px;
+}
+.header__date {
+  color: #fff;
+  font-size: 1.3rem;
+}
+@media only screen and (min-width: 768px) {
+  .header__date {
+    font-size: 1.8rem;
+  }
+}
+.header__register {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.header__title {
+  font-size: 1.3rem;
+  display: block;
+}
+@media only screen and (min-width: 768px) {
+  .header__title {
+    width: 100%;
+    font-size: 2.4rem;
+  }
+}
+.header__btn {
+  background-color: #93f600;
+  padding: 1em 3em;
+  border-radius: 25px;
+  color: #000;
+  box-shadow: 0px 0px 20px #009b7d;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: box-shadow 0.3s, background-color 0.3s;
+}
+@media only screen and (min-width: 360px) {
+  .header__btn {
+    font-size: 1.4rem;
+  }
+}
+.header__btn:hover {
+  background-color: #dbf458;
+  box-shadow: 0px 0px 30px #93f600;
+}
+.header__list {
+  padding: 1em;
+  z-index: 1;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+@media only screen and (min-width: 768px) {
+  .header__list {
+    left: 0;
+    transform: translateX(0);
+  }
+}
+.header__list-text {
+  font-size: 1.05rem;
+  text-align: center;
+  padding: 0.2em 0.5em;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+@media only screen and (min-width: 768px) {
+  .header__list-text {
+    font-size: 1.38rem;
+  }
+}/*# sourceMappingURL=main.css.map */
