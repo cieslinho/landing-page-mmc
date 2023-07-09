@@ -15,9 +15,11 @@ body {
 	width: 100%;
 	z-index: 5;
 	position: fixed;
-	// border-bottom: 2px solid $lime;
+	background-color: $white;
+	border-bottom: 2px solid $mint;
 
 	&__overlay {
+		display: none;
 		position: absolute;
 		right: 0;
 		top: 0;
@@ -34,6 +36,7 @@ body {
 
 	&__overlay.active {
 		opacity: 1;
+		display: block;
 	}
 
 	&__navbar {
@@ -61,10 +64,10 @@ body {
 		width: 70vw;
 		height: 100vh;
 		display: flex;
+		background-color: $white;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		background-color: $white;
 		gap: 0.5em;
 		transform: translateX(100%);
 		transition: transform 0.3s ease-in-out;
@@ -72,12 +75,14 @@ body {
 		box-shadow: 0 0 10px $black;
 
 		@include respond(tablet) {
+			background-color: transparent;
 			flex-direction: row;
 			transform: translate(0);
 			position: inherit;
 			width: inherit;
 			height: inherit;
 			box-shadow: inherit;
+			background-color: none;
 		}
 	}
 
@@ -89,23 +94,27 @@ body {
 		padding: 0.5em 1em;
 		text-transform: uppercase;
 		color: $black;
-		background-color: $white;
+		// background-color: $white;
 		position: relative;
 		text-align: center;
 		transition: color 0.2s, background-color 0.2s;
+
+		@include respond(tablet) {
+			color: $black;
+		}
 
 		@include respond(desktop-small) {
 			font-size: 1.5rem;
 		}
 
 		&:nth-child(2) {
-			color: $lime;
+			color: $veronesa;
 		}
 
 		&::after {
 			position: absolute;
 			content: '';
-			background-color: $lime;
+			background-color: $veronesa;
 			width: 0;
 			height: 2px;
 			left: 0;
@@ -114,11 +123,11 @@ body {
 		}
 
 		&:hover {
-			color: $lime;
+			color: $veronesa;
 
 			@include respond(tablet) {
 				// background-color: $lime;
-				// color: $white;
+				color: $veronesa;
 				transition: width 0.5;
 			}
 
@@ -130,7 +139,7 @@ body {
 
 	&__btn {
 		padding: 0.5em;
-		background: none;
+		background: $mint;
 		border: none;
 		cursor: pointer;
 		z-index: 99999;
@@ -141,7 +150,7 @@ body {
 		}
 
 		&:hover {
-			background-color: $lime;
+			background-color: $veronesa;
 		}
 
 		&-box {
@@ -154,7 +163,7 @@ body {
 			position: absolute;
 			right: 0;
 			top: 0;
-			background-color: $black;
+			background-color: $white;
 			width: 100%;
 			height: 2px;
 			transition: width 0.2s, background-color 0.2s;
@@ -166,7 +175,7 @@ body {
 				top: 12px;
 				height: 2px;
 				width: 75%;
-				background-color: $black;
+				background-color: $white;
 				transition: width 0.2s, background-color 0.2s;
 			}
 
@@ -177,7 +186,7 @@ body {
 				top: 6px;
 				height: 2px;
 				width: 50%;
-				background-color: $black;
+				background-color: $white;
 				transition: width 0.2s, background-color 0.2s;
 			}
 		}
@@ -194,7 +203,7 @@ body {
 	}
 
 	&__btn.active {
-		background-color: $lime;
+		background-color: $veronesa;
 		.nav__btn-bars {
 			background-color: $white;
 
@@ -212,11 +221,13 @@ body {
 .header {
 	margin-top: 70px;
 	height: 70vh;
-	width: 100vw;
+	width: 100%;
 	position: relative;
+	// clip-path: inset(0);
+	// z-index: 0;
 
 	&::after {
-		background-color: rgba($color: $black, $alpha: 0.6);
+		background-color: rgba($color: $black, $alpha: 0.8);
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -242,11 +253,15 @@ body {
 	}
 
 	&__info {
-		margin-top: 2em;
+		margin-top: 5em;
 		z-index: 1;
 		display: flex;
 		align-items: center;
 		gap: 0.5em;
+
+		@include respond(tablet) {
+			margin-top: 6em;
+		}
 
 		img {
 			width: 30px;
@@ -269,17 +284,14 @@ body {
 		flex-direction: column;
 		gap: 1em;
 		color: $white;
-		position: absolute;
-		left: 50%;
-		top: 50%;
 		text-align: center;
-		transform: translate(-50%, -50%);
 		z-index: 1;
 	}
 
 	&__title {
 		font-size: 1.3rem;
 
+		letter-spacing: 1px;
 		// font-size: 1.8rem;
 		display: block;
 
@@ -290,42 +302,44 @@ body {
 	}
 
 	&__btn {
-		background-color: $lime;
+		background-color: $veronesa;
 		padding: 1em 3em;
 		border-radius: 25px;
-		color: $black;
-		box-shadow: 0px 0px 20px $veronesa;
+		color: $white;
+		letter-spacing: 1px;
+		box-shadow: 0px 0px 5px $veronesa;
 		text-transform: uppercase;
 		font-weight: 700;
-
+		border: 2px solid $veronesa;
 		font-size: 1rem;
 
 		@include respond(mobile) {
 			font-size: 1.4rem;
 		}
 
-		transition: box-shadow 0.3s, background-color 0.3s;
+		transition: box-shadow 0.3s, background-color 0.3s, border 0.3s;
 
 		&:hover {
-			background-color: $spring;
-
-			box-shadow: 0px 0px 30px $lime;
+			background-color: $lime;
+			border: 2px solid $mint;
+			box-shadow: 0px 0px 15px $veronesa;
 		}
 	}
 
 	&__list {
 		padding: 1em;
 		z-index: 1;
-		position: absolute;
-		left: 50%;
-		bottom: 0;
-		transform: translateX(-50%);
+
 		color: $white;
 		display: flex;
 		flex-direction: column;
 		gap: 0.3em;
 
 		@include respond(tablet) {
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			transform: translateX(-50%);
 			left: 0;
 			transform: translateX(0);
 		}
@@ -334,12 +348,415 @@ body {
 			font-size: 1.05rem;
 			text-align: center;
 			padding: 0.2em 0.5em;
-			background-color: rgba($color: $black, $alpha: 0.5);
+			color: $white;
+			letter-spacing: 1px;
+			font-weight: 700;
+			// background-color: rgba($color: $black, $alpha: 0.5);
 			// border-radius: 25px;
 
 			@include respond(tablet) {
 				font-size: 1.38rem;
 			}
+		}
+	}
+}
+
+// section data
+
+.data {
+	@include section-padding;
+
+	background-color: $mint;
+
+	&__boxes {
+		overflow: hidden;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2em;
+	}
+
+	&__box {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.3em;
+		justify-content: center;
+		background-color: rgba($color: $veronesa, $alpha: 0.4);
+		padding: 1em;
+		height: 150px !important;
+		// border-radius: 25px;
+		text-align: center;
+		// border: 2px solid $spring;
+
+		&-number {
+			font-size: 2rem;
+
+			@include respond(mobile) {
+				font-size: 3rem;
+			}
+
+			@include respond(mobile-max) {
+				font-size: 5rem;
+			}
+
+			color: $white;
+			font-weight: 700;
+		}
+
+		&-text {
+			font-size: 1.7rem;
+
+			@include respond(tablet) {
+				font-size: 1.8rem;
+			}
+			@include respond(tablet) {
+				font-size: 1.8rem;
+			}
+
+			color: $white;
+			font-weight: 700;
+		}
+	}
+
+	.swiffy-slider {
+		--swiffy-slider-item-gap: 50px !important;
+	}
+
+	.slider-item-show2-sm {
+		--swiffy-slider-item-count: 1;
+
+		@include respond(tablet) {
+			--swiffy-slider-item-count: 2;
+		}
+
+		@include respond(desktop-small) {
+			--swiffy-slider-item-count: 3;
+		}
+	}
+
+	.slider-nav {
+		display: none;
+		filter: none;
+
+		@include respond(tablet) {
+			display: flex;
+
+			&-previous {
+				left: -20px !important;
+			}
+
+			&-next {
+				right: -20px !important;
+			}
+
+			&::before {
+				background-color: $veronesa;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				transition: background-color 0.3s;
+			}
+
+			&:hover {
+				&::before {
+					background-color: rgba($color: $black, $alpha: 0.1);
+				}
+			}
+
+			&::after {
+				background-color: $white;
+			}
+
+			&::before,
+			&::after {
+				width: 3rem;
+				height: 3rem;
+			}
+		}
+	}
+
+	&__btn {
+		background-color: $veronesa;
+		padding: 1em 3em;
+		border-radius: 25px;
+		color: $white;
+		letter-spacing: 1px;
+		box-shadow: 0px 0px 5px $veronesa;
+		text-transform: uppercase;
+		font-weight: 700;
+		text-align: center;
+		border: 2px solid $veronesa;
+		font-size: 1rem;
+
+		@include respond(mobile) {
+			font-size: 1.4rem;
+		}
+
+		transition: box-shadow 0.3s, background-color 0.3s, border 0.3s;
+
+		&:hover {
+			background-color: $lime;
+			border: 2px solid $mint;
+
+			box-shadow: 0px 0px 15px $veronesa;
+		}
+	}
+}
+
+// section benefits
+
+.benefits {
+	@include section-padding;
+	background-color: $veronesa;
+
+	&__boxes {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 2em;
+
+		@include respond(tablet) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			align-items: stretch;
+		}
+		@include respond(desktop-small) {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			align-items: stretch;
+		}
+	}
+
+	&__box {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 1em;
+		background-color: $mint;
+		width: 100%;
+		max-width: 330px;
+		gap: 1em;
+		transition: transform 0.3s, color 0.3s, background-color 0.3s;
+		border: 2px solid transparent;
+		// box-shadow: 0px 0px 10px $mint;
+
+		&:hover {
+			// transform: scale(1.03);
+			background-color: $veronesa;
+			color: $mint;
+			border: 2px solid $mint;
+		}
+
+		@include respond(tablet) {
+			justify-content: flex-start;
+			width: 100%;
+			max-width: 100%;
+			// width: 25%;
+
+			&:hover {
+				transform: scale(1.05);
+			}
+		}
+
+		&-img {
+			max-width: 130px;
+			width: 100%;
+			object-fit: cover;
+		}
+
+		&-texts {
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+		}
+
+		&-title {
+			text-align: center;
+			font-size: 1.6rem;
+			text-transform: uppercase;
+			font-weight: 700;
+
+			@include respond(desktop-small) {
+				font-size: 1.8rem;
+			}
+		}
+
+		&-text {
+			line-height: 150%;
+			font-size: 1.4rem;
+
+			@include respond(desktop-small) {
+				font-size: 1.7rem;
+			}
+		}
+	}
+}
+
+// section program
+
+.program {
+	background-color: $mint;
+
+	@include section-padding;
+
+	&__boxes {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1em;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+
+		@include respond(tablet) {
+			flex-direction: row;
+		}
+	}
+
+	&__box {
+		background-color: $mint;
+		display: flex;
+		padding: 1em;
+		flex-direction: column;
+		// gap: 0.5em;
+		text-align: center;
+		line-height: 150%;
+	}
+
+	&__day {
+		background-color: rgba($color: $veronesa, $alpha: 0.4);
+		padding: 1em;
+		text-align: center;
+		color: $white;
+		font-size: 2.5rem;
+		font-weight: 700;
+		border-bottom: 4px solid $mint;
+	}
+
+	&__list {
+		background-color: rgba($color: $veronesa, $alpha: 0.6);
+		padding: 2em;
+		display: flex;
+		flex-direction: column;
+		gap: 2em;
+
+		@include respond(tablet) {
+			max-height: 300px;
+
+			overflow-y: scroll;
+		}
+
+		&-item {
+			position: relative;
+			margin-bottom: 1em;
+			color: $white;
+			&::before {
+				position: absolute;
+				content: '';
+				background-color: $veronesa;
+				left: 50%;
+				bottom: -49px;
+				transform: translateX(-50%);
+				width: 3px;
+				height: 50px;
+				border-left: 1px solid $mint;
+				border-right: 1px solid $mint;
+			}
+
+			&::after {
+				position: absolute;
+				content: '';
+				left: 50%;
+				bottom: -30px;
+
+				transform: translateX(-50%);
+				width: 15px;
+				height: 15px;
+				border-radius: 50%;
+				border: 2px solid $mint;
+				background-color: $veronesa;
+			}
+
+			&:last-child {
+				&::after,
+				&::before {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+// section prelegents
+
+.prelegents {
+	@include section-padding;
+	background-image: url(/assets/images/background-hero.jpg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+
+	&__boxes {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 2em;
+
+		@include respond(tablet) {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	&__box {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.15em;
+		text-align: center;
+		transition: transform 0.3s;
+
+		&:hover {
+			transform: scale(1.05);
+		}
+	}
+
+	&__img {
+		width: 100%;
+		max-width: 200px;
+		margin-bottom: 0.5em;
+		border-radius: 50%;
+		border: 2px solid $veronesa;
+	}
+
+	&__name {
+		color: $white;
+		font-size: 1.5rem;
+
+		@include respond(tablet) {
+			font-size: 1.9rem;
+		}
+	}
+
+	&__work {
+		color: $white;
+		font-style: italic;
+		font-size: 1.3rem;
+
+		@include respond(tablet) {
+			font-size: 1.7rem;
 		}
 	}
 }

@@ -31,3 +31,11 @@
 		}
 	}
 }
+
+@mixin section-padding {
+	padding-block: 1em;
+
+	@include respond(tablet) {
+		padding-block: 2em;
+	}
+}
