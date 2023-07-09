@@ -8,3 +8,18 @@
 		padding: 1em 2em;
 	}
 }
+
+.section-title {
+	color: $veronesa;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin-bottom: 1em;
+	border-left: 2px solid $veronesa;
+	margin-left: 1em;
+	font-size: 2.3rem;
+	padding-left: 0.5em;
+
+	@include respond(tablet) {
+		font-size: 2.8rem;
+	}
+}

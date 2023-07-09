@@ -245,7 +245,7 @@ body {
 
 	&__boxes {
 		display: flex;
-		justify-content: flex-start;
+		justify-content: center;
 		flex-direction: column;
 		align-items: center;
 		height: 100%;
@@ -253,15 +253,10 @@ body {
 	}
 
 	&__info {
-		margin-top: 5em;
 		z-index: 1;
 		display: flex;
 		align-items: center;
 		gap: 0.5em;
-
-		@include respond(tablet) {
-			margin-top: 6em;
-		}
 
 		img {
 			width: 30px;
@@ -274,7 +269,7 @@ body {
 		font-size: 1.3rem;
 
 		@include respond(tablet) {
-			font-size: 1.8rem;
+			font-size: 2.3rem;
 		}
 	}
 
@@ -297,7 +292,7 @@ body {
 
 		@include respond(tablet) {
 			width: 100%;
-			font-size: 2.4rem;
+			font-size: 2.8rem;
 		}
 	}
 
@@ -314,7 +309,11 @@ body {
 		font-size: 1rem;
 
 		@include respond(mobile) {
-			font-size: 1.4rem;
+			font-size: 1.2rem;
+		}
+
+		@include respond(tablet) {
+			font-size: 1.5rem;
 		}
 
 		transition: box-shadow 0.3s, background-color 0.3s, border 0.3s;
@@ -337,11 +336,8 @@ body {
 
 		@include respond(tablet) {
 			position: absolute;
-			left: 50%;
-			bottom: 0;
-			transform: translateX(-50%);
+			bottom: 20px;
 			left: 0;
-			transform: translateX(0);
 		}
 
 		&-text {
@@ -355,7 +351,11 @@ body {
 			// border-radius: 25px;
 
 			@include respond(tablet) {
-				font-size: 1.38rem;
+				font-size: 1.4rem;
+			}
+
+			@include respond(desktop-small) {
+				font-size: 1.8rem;
 			}
 		}
 	}
@@ -388,7 +388,7 @@ body {
 		background-color: rgba($color: $veronesa, $alpha: 0.4);
 		padding: 1em;
 		height: 150px !important;
-		// border-radius: 25px;
+		border-radius: 10px;
 		text-align: center;
 		// border: 2px solid $spring;
 
@@ -542,6 +542,7 @@ body {
 		background-color: $mint;
 		width: 100%;
 		max-width: 330px;
+		border-radius: 10px;
 		gap: 1em;
 		transition: transform 0.3s, color 0.3s, background-color 0.3s;
 		border: 2px solid transparent;
@@ -549,7 +550,7 @@ body {
 
 		&:hover {
 			// transform: scale(1.03);
-			background-color: $veronesa;
+			background-color: rgba($color: $black, $alpha: 0.3);
 			color: $mint;
 			border: 2px solid $mint;
 		}
@@ -746,6 +747,10 @@ body {
 		font-size: 1.5rem;
 
 		@include respond(tablet) {
+			font-size: 1.6rem;
+		}
+
+		@include respond(desktop-small) {
 			font-size: 1.9rem;
 		}
 	}
@@ -756,7 +761,293 @@ body {
 		font-size: 1.3rem;
 
 		@include respond(tablet) {
+			font-size: 1.5rem;
+		}
+
+		@include respond(desktop-small) {
 			font-size: 1.7rem;
+		}
+	}
+
+	&__title {
+		margin-block: 1em;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		text-align: center;
+		color: $white;
+		font-size: 2.3rem;
+
+		@include respond(tablet) {
+			font-size: 3.5rem;
+		}
+	}
+}
+
+// section group target
+
+.target {
+	@include section-padding;
+	background-color: $veronesa;
+
+	.section-title {
+		color: $white;
+		border-left-color: $white;
+	}
+}
+
+// section logos
+
+.logos {
+	@include section-padding;
+	background-color: $mint;
+
+	&__title {
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		margin-bottom: 1em;
+
+		color: $veronesa;
+
+		@include respond(tablet) {
+			font-size: 3.5rem;
+		}
+	}
+
+	&__boxes {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1em;
+
+		@include respond(tablet) {
+			display: grid;
+			grid-template-columns: repeat(4, 180px);
+		}
+	}
+
+	&__img {
+		display: block;
+		background-color: rgba($color: $veronesa, $alpha: 0.1);
+		max-width: 300px;
+		width: 100%;
+		height: 120px;
+		// max-width: 150px;
+		object-fit: contain;
+		padding: 1em;
+		transition: background-color 0.3s, transform 0.3s;
+		border-radius: 10px;
+
+		&:hover {
+			transform: scale(1.05);
+			background-color: rgba($color: $veronesa, $alpha: 0.3);
+		}
+
+		@include respond(tablet) {
+			width: 100%;
+		}
+	}
+}
+
+// section gifts
+
+.gifts {
+	@include section-padding;
+
+	background-color: $veronesa;
+
+	&__boxes {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 2em;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2em;
+
+		@include respond(tablet) {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			align-items: baseline;
+		}
+	}
+
+	&__box {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 1.5em;
+		color: $white;
+	}
+
+	&__img {
+		margin: 0 auto;
+		max-width: 150px;
+		width: 100%;
+
+		@include respond(tablet) {
+			max-width: 230px;
+		}
+	}
+
+	&__text {
+		text-align: center;
+		font-size: 1.9rem;
+
+		@include respond(tablet) {
+			font-size: 2.3rem;
+		}
+	}
+
+	&__btn {
+		background-color: $mint;
+		border-color: $mint;
+		box-shadow: 0 0 5px $mint;
+	}
+}
+
+// section organizer
+
+.organizer {
+	@include section-padding;
+
+	background-color: $mint;
+
+	&__boxes {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5em;
+
+		@include respond(tablet) {
+			flex-direction: row;
+		}
+	}
+
+	&__box {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		padding: 1em;
+		align-items: center;
+
+		&-texts {
+			line-height: 150%;
+			background-color: rgba($color: $veronesa, $alpha: 0.1);
+			border-radius: 10px;
+		}
+
+		@include respond(tablet) {
+			&-img {
+				width: 30%;
+			}
+
+			&-texts {
+				width: 70%;
+			}
+		}
+	}
+}
+
+// section contact
+
+.contact {
+	@include section-padding;
+
+	background-color: $veronesa;
+
+	.section-title {
+		color: $white;
+		border-color: $white;
+	}
+
+	&__boxes {
+		display: flex;
+		flex-direction: column;
+		// align-items: center;
+		justify-content: center;
+		gap: 2em;
+
+		@include respond(tablet) {
+			flex-direction: row;
+			align-items: stretch;
+			justify-content: flex-start;
+		}
+	}
+
+	&__box {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		padding: 1em;
+		background-color: $mint;
+		text-align: center;
+		border-radius: 10px;
+		box-shadow: 0 0 5px $mint;
+		transition: transform 0.3s, color 0.3s, background-color 0.3s;
+		border: 2px solid transparent;
+		// box-shadow: 0px 0px 10px $mint;
+
+		&:hover {
+			// transform: scale(1.03);
+			background-color: rgba($color: $black, $alpha: 0.3);
+			color: $mint;
+			border: 2px solid $mint;
+
+			.contact__box-text {
+				color: $mint;
+			}
+			.contact__box-img {
+				border-color: $mint;
+			}
+		}
+
+		&-top,
+		&-bottom {
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			align-items: center;
+		}
+
+		&-bottom {
+			gap: 0.3em;
+		}
+
+		&-work {
+			font-size: 1.8rem;
+			text-align: center;
+
+			@include respond(tablet) {
+				font-size: 2.3rem;
+			}
+		}
+
+		&-img {
+			max-width: 120px;
+			border-radius: 50%;
+			border: 2px solid $veronesa;
+			transition: border 0.3s;
+		}
+
+		&-text {
+			color: $black;
+			transition: color 0.3s;
+		}
+
+		&-link {
+			color: $black;
+			border-bottom: 1px solid transparent;
+
+			&:hover {
+				border-bottom: 1px solid $white;
+			}
 		}
 	}
 }
