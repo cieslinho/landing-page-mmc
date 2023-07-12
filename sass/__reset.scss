@@ -19,7 +19,11 @@
 html {
 	scroll-behavior: smooth;
 	font-size: 62.5%;
-	scroll-padding-top: 100px;
+	scroll-padding-top: 145px;
+
+	@include respond(tablet) {
+		scroll-padding-top: 145px;
+	}
 }
 
 body {

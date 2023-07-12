@@ -1,7 +1,7 @@
-@import '__reset.scss';
 @import '__colors.scss';
 @import '__mixins.scss';
 @import '__components.scss';
+@import '__reset.scss';
 
 body {
 	background-color: $white;
@@ -13,7 +13,7 @@ body {
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 5;
+	z-index: 99999;
 	position: fixed;
 	background-color: $white;
 	border-bottom: 2px solid $lime;
@@ -219,7 +219,7 @@ body {
 // header
 
 .header {
-	margin-top: 70px;
+	margin-top: 65.5px;
 	height: 70vh;
 	width: 100%;
 	position: relative;
@@ -245,11 +245,15 @@ body {
 
 	&__boxes {
 		display: flex;
-		justify-content: center;
+		justify-content: flex-end;
 		flex-direction: column;
-		align-items: center;
+		// align-items: center;
 		height: 100%;
 		width: 100%;
+		gap: 5em;
+		@include respond(tablet) {
+			gap: 9em;
+		}
 	}
 
 	&__info {
@@ -257,10 +261,24 @@ body {
 		display: flex;
 		align-items: center;
 		gap: 0.5em;
+		position: relative;
 
 		img {
 			width: 30px;
 			height: 30px;
+		}
+	}
+
+	&__bottom {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1em;
+		gap: 3em;
+
+		@include respond(desktop-small) {
+			flex-direction: row;
 		}
 	}
 
@@ -269,7 +287,7 @@ body {
 		font-size: 1.3rem;
 
 		@include respond(tablet) {
-			font-size: 2.3rem;
+			font-size: 2.8rem;
 		}
 	}
 
@@ -280,11 +298,12 @@ body {
 		gap: 1em;
 		color: $white;
 		text-align: center;
-		z-index: 1;
+		position: relative;
+		z-index: 20;
 	}
 
 	&__title {
-		font-size: 1.3rem;
+		font-size: 1.5rem;
 
 		letter-spacing: 1px;
 		// font-size: 1.8rem;
@@ -292,7 +311,7 @@ body {
 
 		@include respond(tablet) {
 			width: 100%;
-			font-size: 2.8rem;
+			font-size: 3.6rem;
 		}
 	}
 
@@ -326,23 +345,26 @@ body {
 	}
 
 	&__list {
-		padding: 1em;
+		// padding: 1em;
 		z-index: 1;
 
+		// margin-left: 1em;
 		color: $white;
 		display: flex;
 		flex-direction: column;
 		gap: 0.3em;
+		position: relative;
 
 		@include respond(tablet) {
-			position: absolute;
-			bottom: 20px;
-			left: 0;
+			// position: absolute;
+			// bottom: 20px;
+			// left: 0;
 		}
 
 		&-text {
+			position: relative;
 			font-size: 1.05rem;
-			text-align: center;
+			text-align: left;
 			padding: 0.2em 0.5em;
 			color: $white;
 			letter-spacing: 1px;
@@ -356,6 +378,17 @@ body {
 
 			@include respond(desktop-small) {
 				font-size: 1.8rem;
+			}
+
+			&::before {
+				position: absolute;
+				content: '';
+				background-color: $veronesa;
+				left: -10px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 10px;
+				height: 10px;
 			}
 		}
 	}
@@ -545,14 +578,14 @@ body {
 		border-radius: 10px;
 		gap: 1em;
 		color: $navy;
-		transition: transform 0.3s, color 0.3s, background-color 0.3s;
+		transition: transform 0.3s;
 		border: 2px solid transparent;
 
 		&:hover {
 			// transform: scale(1.03);
 			box-shadow: 0px 0px 20px $lime;
-			background-color: rgba($color: $black, $alpha: 0.3);
-			color: $white;
+			// background-color: rgba($color: $white, $alpha: 0.85);
+			// color: $white;
 			border: 2px solid $lime;
 		}
 
@@ -569,8 +602,9 @@ body {
 
 		&-img {
 			max-width: 130px;
+			height: 130px;
 			width: 100%;
-			object-fit: cover;
+			object-fit: contain;
 		}
 
 		&-texts {
@@ -654,7 +688,7 @@ body {
 	}
 
 	&__list {
-		background-color: rgba($color: $navy, $alpha: 0.1);
+		background-color: $white;
 		padding: 2em;
 		display: flex;
 		flex-direction: column;
@@ -663,11 +697,12 @@ body {
 		border-bottom-right-radius: 10px;
 		border: 2px solid $lime;
 		border-top: none;
+		height: 100%;
 
 		@include respond(tablet) {
-			max-height: 400px;
+			// max-height: 400px;
 
-			overflow-y: scroll;
+			// overflow-y: scroll;
 		}
 
 		&-item {
@@ -829,7 +864,7 @@ body {
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5em;
+		gap: 1em;
 		transition: transform 0.3s;
 
 		&:hover {
@@ -855,6 +890,7 @@ body {
 
 		&-text {
 			color: $white;
+			text-align: center;
 
 			@include respond(tablet) {
 				font-size: 1.9rem;
@@ -890,8 +926,10 @@ body {
 		gap: 1em;
 
 		@include respond(tablet) {
-			display: grid;
-			grid-template-columns: repeat(4, 180px);
+			// display: grid;
+			// grid-template-columns: repeat(4, 250px);
+			flex-direction: row;
+			flex-wrap: wrap;
 		}
 	}
 
@@ -914,6 +952,7 @@ body {
 
 		@include respond(tablet) {
 			width: 100%;
+			height: 150px;
 		}
 	}
 }
@@ -1016,6 +1055,10 @@ body {
 					transform: scale(1.2);
 				}
 			}
+
+			img {
+				width: 100%;
+			}
 		}
 
 		&-texts {
@@ -1062,7 +1105,6 @@ body {
 		@include respond(tablet) {
 			flex-direction: row;
 			align-items: stretch;
-			justify-content: flex-start;
 		}
 	}
 
@@ -1131,6 +1173,111 @@ body {
 
 			&:hover {
 				border-bottom: 1px solid $lime;
+			}
+		}
+	}
+}
+
+// section newsletter
+.newsletter {
+	@include section-padding;
+	background-color: $navy;
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		font-family: 'Roboto', sans-serif !important;
+
+		p {
+			&:first-child {
+			}
+
+			text-transform: uppercase;
+			color: $white !important;
+			font-family: 'Roboto', sans-serif !important;
+		}
+
+		span {
+			color: $white !important;
+		}
+
+		p.form-field {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5em;
+
+			input,
+			label {
+				width: 100%;
+				color: $white;
+				text-align: left !important;
+				background-image: none !important;
+			}
+
+			input {
+				color: $white !important;
+				padding: 1em !important;
+				background-color: rgba($color: $white, $alpha: 0.1);
+				border: 1px solid $spring;
+				outline: none;
+				transition: border 0.3s;
+
+				&:hover,
+				&:focus {
+					border: 1px solid $lime;
+				}
+			}
+		}
+
+		.Zgoda_marketingowa {
+			margin: 3px 5px !important;
+
+			span.value {
+				span {
+					display: flex;
+					align-items: center;
+					gap: 1em;
+
+					input {
+						width: initial;
+					}
+				}
+			}
+		}
+
+		p.submit {
+			margin: 3px 5px !important;
+			margin-top: 1em !important;
+
+			input {
+				width: initial !important;
+				margin: 0 auto !important;
+				display: block !important;
+				align-self: center;
+				background-color: $veronesa;
+				font-size: 1.2rem !important;
+				font-family: 'Roboto', sans-serif !important;
+				padding: 1em 3em !important;
+				border-radius: 25px;
+				color: $white;
+				letter-spacing: 1px;
+				box-shadow: 0px 0px 5px $veronesa;
+				text-transform: uppercase;
+				font-weight: 700;
+				border: 2px solid $veronesa;
+				cursor: pointer;
+
+				transition: box-shadow 0.3s, background-color 0.3s, border 0.3s;
+
+				&:hover {
+					background-color: $lime;
+					border: 2px solid $mint;
+					box-shadow: 0px 0px 15px $veronesa;
+				}
+
+				@include respond(tablet) {
+					font-size: 1.5rem !important;
+				}
 			}
 		}
 	}
